@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server'
+import { cookies } from 'next/headers';
+// import { User } from '@/models/User';
 
 async function verifyJWT(token, secret) {
     const [header, payload, signature] = token.split('.');
@@ -10,10 +12,33 @@ async function verifyJWT(token, secret) {
  
 export async function middleware(request) {
     
-    // console.log(request.nextUrl.pathname);
-    
+    console.log(request.nextUrl.pathname);
+    if(request.nextUrl.pathname.startsWith("/buyer/dashboard")){
+      const role = await cookies(request).get('role');
+      console.log(role.value);
+      if(role.value !== "buyer"){
+        return NextResponse.redirect("http://localhost:3000/")
+      }
+      return NextResponse.next();
+    }
 
-    //Functionalioty to be added is that the jwt token should be sent in the header of every request apart from login and register
+    if(request.nextUrl.pathname.startsWith("/auction-house-admin/dashboard")){
+      const role = await cookies(request).get('role');
+      if(role.value !== "auction house admin"){
+        return NextResponse.redirect("http://localhost:3000/")
+      }
+      return NextResponse.next();
+    }
+
+    if(request.nextUrl.pathname.startsWith("/consignor/dashboard")){
+      const role = await cookies(request).get('role');
+      if(role.value !== "consignor"){
+        return NextResponse.redirect("http://localhost:3000/")
+      }
+      return NextResponse.next();
+    }    
+
+    //Functionality to be added is that the jwt token should be sent in the header of every request apart from login and register
     const jwtToken = request.headers.get("authorization");
     const token = jwtToken.split(' ')[1]
     
@@ -31,5 +56,9 @@ export async function middleware(request) {
 }
 
 export const config = {
-    matcher: ['/api/auction-house/create' , '/api/user/set-role'],
-  }
+    matcher: ['/api/auction-house/create' , 
+      '/api/user/set-role' ,
+      "/buyer/dashboard" ,
+      "/auction-house-admin/dashboard" , 
+      "/consignor/dashboard" ],
+}

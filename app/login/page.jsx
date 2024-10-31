@@ -21,10 +21,20 @@ const LoginPage = () => {
           console.log(response);
           const jwtToken = response.data.token;
           if(jwtToken){
-            localStorage.setItem("jwtToken" , jwtToken);
-            router.push("/user/dashboard");
+            localStorage.setItem("jwtToken" , `Bearer ${jwtToken}`);
           }
           
+          if(response.data.role == "buyer"){
+            router.push("/buyer/dashboard");
+          }
+
+          if(response.data.role === "auction house admin"){
+            router.push("/auction-house-admin/dashboard")
+          }
+
+          if(response.data.role === "consignor"){
+            router.push("/consignor/dashboard")
+          }
         }).catch(function(e){
           throw new Error();
         })

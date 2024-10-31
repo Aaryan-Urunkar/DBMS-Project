@@ -1,4 +1,4 @@
-import User from "../../../../models/User"
+import User from "@/models/User"
 import { NextResponse } from "next/server";
 import { connectToDB } from "@/mongoose/connectDB";
 
@@ -25,8 +25,17 @@ export async function POST(req , {params}) {
         const token = user.createJWT()
         
         
-        console.log("Sending response:", { name: user.name, token });
-        return NextResponse.json({name:user.name , token }, {status:200 });
+        // return NextResponse.json({name:user.name, role:user.role , token }, {status:200 });
+    
+        const response = NextResponse.json({ name: user.name, role: user.role }, { status: 200 });
+        response.cookies.set('role', user.role, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',  // Use secure cookies in production
+            path: '/',
+            maxAge: 60 * 60 * 24, // 1 day in seconds
+        });
+
+        return response;
     } catch (error) {
         console.error("Error parsing request:", error.message);
         return NextResponse.json({ error: error.message || "Failed to parse request" }, { status: 400 });
