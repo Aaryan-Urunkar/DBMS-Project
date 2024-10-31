@@ -14,8 +14,53 @@
   }
 }
 
-body {
+/* body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+} */
+
+.carousel-background {
+  /* height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white; */
+  font-family: Arial, sans-serif;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  animation: backgroundCarousel 20s infinite;  /* Adjust duration as needed */
+}
+
+.content {
+  position: relative;
+  z-index: 1;  /* Ensures content is visible over background */
+}
+
+.carousel-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);  /* Optional overlay for better readability */
+  z-index: 0;
+}
+
+@keyframes backgroundCarousel {
+  0% {
+    background-image: url('../img/auction-house.webp');
+  }
+  33% {
+    background-image: url('../img/auction-hammer.jpeg');
+  }
+  66% {
+    background-image: url('../img/auction-vase.jpg');
+  }
+  100% {
+    background-image: url('../img/auction-house.webp'); /* Loop back to the first image */
+  }
 }
