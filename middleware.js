@@ -13,6 +13,7 @@ async function verifyJWT(token, secret) {
 export async function middleware(request) {
     
     console.log(request.nextUrl.pathname);
+    
     if(request.nextUrl.pathname.startsWith("/buyer/dashboard")){
       const role = await cookies(request).get('role');
       console.log(role.value);
@@ -30,10 +31,10 @@ export async function middleware(request) {
       return NextResponse.next();
     }
 
-    if(request.nextUrl.pathname.startsWith("/consignor/dashboard")){
+    if(request.nextUrl.pathname.startsWith("/consignor/dashboard") || request.nextUrl.pathname.startsWith("/consignor/add-lot/")){
       const role = await cookies(request).get('role');
       if(role.value !== "consignor"){
-        return NextResponse.redirect("http://localhost:3000/")
+        return NextResponse.redirect("http://localhost:3000/login")
       }
       return NextResponse.next();
     }    
@@ -52,13 +53,17 @@ export async function middleware(request) {
     response.headers.set('x-user-id', payload.userId);
     response.headers.set('x-user-name', payload.name);
     
+    console.log("Midleware successful on " + request.nextUrl.pathname);
     return response;
 }
 
 export const config = {
     matcher: ['/api/auction-house/create' , 
       '/api/user/set-role' ,
+      '/api/auction-house/',
+      "/api/lot/create",
       "/buyer/dashboard" ,
       "/auction-house-admin/dashboard" , 
-      "/consignor/dashboard" ],
+      "/consignor/dashboard", 
+      "/consignor/add-lot/:id" ],
 }

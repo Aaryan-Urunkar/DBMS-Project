@@ -26,8 +26,16 @@ const UserSchema = new mongoose.Schema({
     },
     role: {
       type:String,
-      enum: ['buyer', 'consignor', 'auction house admin'],
+      enum: ['buyer', 'consignor', 'auction house admin' , 'admin'],
       default: 'buyer',
+    },
+    totalBalance : { //For buyers
+      type : Number,
+      default : 0
+    },
+    totalEarnings : { //For consignors
+      type : Number ,
+      default : 0
     }
   })
 

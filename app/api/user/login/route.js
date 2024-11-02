@@ -27,7 +27,7 @@ export async function POST(req , {params}) {
         
         // return NextResponse.json({name:user.name, role:user.role , token }, {status:200 });
     
-        const response = NextResponse.json({ name: user.name, role: user.role }, { status: 200 });
+        const response = NextResponse.json({ name: user.name, role: user.role , token }, { status: 200 });
         response.cookies.set('role', user.role, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',  // Use secure cookies in production

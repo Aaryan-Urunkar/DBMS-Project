@@ -2,8 +2,11 @@
 import React, { useRef, useState } from 'react'
 import axios from 'axios'
 import { motion } from "framer-motion";
+import {useRouter} from "next/navigation"
 
 const ChooseRole = () => {
+
+    const router = useRouter();
   
     const [isAuctionHouseOwner , setIsAuctionHouseOwner] = useState(false)
     const [isBuyer , setIsBuyer] = useState(false)
@@ -43,7 +46,7 @@ const ChooseRole = () => {
                 }
             }).then(function (response) {
                 console.log(response);
-                
+                router.push("/login")
             }).catch(function (error){
                 console.log(error);
                 
