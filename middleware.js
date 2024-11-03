@@ -62,8 +62,9 @@ export const config = {
       '/api/user/set-role' ,
       '/api/auction-house/',
       "/api/lot/create",
+      "/api/lot/fetch",
       "/buyer/dashboard" ,
       "/auction-house-admin/dashboard" , 
       "/consignor/dashboard", 
-      "/consignor/add-lot/:id" ],
+      "/consignor/add-lot/:id*" ],
 }

@@ -18,7 +18,8 @@ const AddLotPage = () => {
     currentHighestBid: '',
     retailPrice: '',
     description: '',
-    auctionHouseOfIssuance : `${id}`
+    auctionHouseOfIssuance : `${id}`,
+    image : null
   });
 
   const handleChange = (e) => {
@@ -43,7 +44,8 @@ const AddLotPage = () => {
         currentHighestBid: '',
         retailPrice: '',
         description: '',
-        auctionHouseOfIssuance : ""
+        auctionHouseOfIssuance : "",
+        image : null
       });
     } catch (error) {
       console.error('Error adding lot:', error);
@@ -70,6 +72,15 @@ const AddLotPage = () => {
           required
           placeholder="Enter lot name"
           value={lotData.name}
+          onChange={handleChange}
+          className="w-full"
+        />
+
+        <Input
+          label="Image"
+          name="image"
+          placeholder="Enter image link"
+          value={lotData.image}
           onChange={handleChange}
           className="w-full"
         />

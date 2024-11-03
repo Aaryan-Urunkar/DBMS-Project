@@ -13,13 +13,13 @@ export async function POST(req) {
     const userName = req.headers.get("x-user-name");
 
     const user = await User.findOne({_id : userId , name : userName})
-    console.log(user);
+    //console.log(user);
     
     if(!user || user.role !== "consignor"){
         return NextResponse.json({message : "Invalid user or invalid user role"} , {status : 500});
     }
 
-    const newLot = await Lot.create(data);
+    const newLot = await Lot.create({...data , createdBy : userId});
  
     return NextResponse.json({ message: 'Lot added successfully' , newLot }, { status: 201 });
   } catch (error) {
