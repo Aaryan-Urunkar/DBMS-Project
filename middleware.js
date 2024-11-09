@@ -63,8 +63,11 @@ export const config = {
       '/api/auction-house/',
       "/api/lot/create",
       "/api/lot/fetch",
+      "/api/auction-house/creator",
+      "/api/auction-house/delete",
       "/buyer/dashboard" ,
       "/auction-house-admin/dashboard" , 
       "/consignor/dashboard", 
-      "/consignor/add-lot/:id*" ],
+      "/consignor/add-lot/:id*",
+       ],
 }
