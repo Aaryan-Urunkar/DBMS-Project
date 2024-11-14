@@ -77,7 +77,7 @@ const ConsignorDashboard = () => {
 
   return (
     <>
-      <section className="h-screen w-screen flex flex-col items-center">
+      <section className="h-screen w-screen flex flex-col items-center overflow-x-hidden">
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
         <link href="https://fonts.googleapis.com/css2?family=Chokokutai&display=swap" rel="stylesheet"></link>
@@ -88,7 +88,7 @@ const ConsignorDashboard = () => {
           <span className={`${showProfile && "font-bold underline"} hover:underline hover:scale-110`} onClick={onProfileOptionClick}>Profile</span>
         </div>
         {showAuctionHouses &&
-          <div className="w-[90%] flex flex-wrap justify-between">
+          <div className="w-[90%] flex flex-wrap justify-between ">
             {
               allAuctionHouses 
               &&
@@ -97,13 +97,13 @@ const ConsignorDashboard = () => {
                   <div key={auctionHouse._id} onClick={() => onAuctionHouseClick(auctionHouse)} >
                       <Card  className="py-4 shadow-2xl hover:scale-125 duration-500">
                         <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-                          <p className="text-xl  font-bold">Name : {auctionHouse.name}</p>
-                          <h4 className="font-bold text-large">Fixed commission percentage : {auctionHouse.fixedCommissionPercentage} %</h4>
+                          <p className="text-xl  font-bold text-black">Name : {auctionHouse.name}</p>
+                          <h4 className="font-bold text-large text-black">Fixed commission percentage : {auctionHouse.fixedCommissionPercentage} %</h4>
                         </CardHeader>
                         <CardBody className="overflow-visible py-2">
                           <Image
                             alt="Card background"
-                            className="object-cover rounded-xl"
+                            className="object-cover rounded-xl align-middle"
                             src={auctionHouse.image}
                             width={270}
                             height={350}

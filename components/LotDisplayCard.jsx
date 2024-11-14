@@ -8,7 +8,7 @@ import {
 } from "@nextui-org/react";
 import axios from "axios";
 
-const LotDisplayCard = ({ lot }) => {
+const LotDisplayCard = ({ lot  , onClick}) => {
 
     const [aH , setAH] = useState(lot.auctionHouseOfIssuance)
     
@@ -28,25 +28,26 @@ const LotDisplayCard = ({ lot }) => {
 
 
   return (
-      <Card className="mt-3 py-4 shadow-2xl bg-yellow-100 rounded-xl hover:scale-125 duration-500 hover:z-10">
+      <Card className="mt-3 py-4 shadow-2xl bg-yellow-100 rounded-xl hover:scale-125 duration-500 hover:z-10 md:w-[25%] h-[100%]">
         <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-          <p className="text-2xl font-bold font-serif mb-4">{lot.name}</p>
-          <small className="text-md uppercase font-bold ">Status : {lot.lotStatus}</small>
-          <h4 className="font-bold text-large">Artist : {lot.artistName}</h4>
-          <h4 className="font-bold text-large">Auction House : {aH}</h4>
+          <p className="text-2xl font-bold font-serif mb-4 text-black">{lot.name}</p>
+          <small className="text-md uppercase font-bold text-black">Status : {lot.lotStatus}</small>
+          <h4 className="font-bold text-large text-black">Artist : {lot.artistName}</h4>
+          <h4 className="font-bold text-large text-black">Auction House : {aH}</h4>
         </CardHeader>
-        <CardBody className="overflow-visible py-2">
-          <Image
+        <CardBody className="py-2">
+          <Image 
             alt="Card background"
-            className="object-contain rounded-xl"
+            className="object-contain rounded-xl h-[100%]"
             src={lot.image}
-            width={300}
+            width={320}
             height={270}
+            onClick={onClick}
           />
         </CardBody>
         <CardFooter className="flex-col items-start">
-          <h4 className="font-bold text-lg">Retail Price : {lot.retailPrice} </h4>
-          <h4 className="font-bold text-lg">
+          <h4 className="font-bold text-lg text-black">Retail Price : {lot.retailPrice} </h4>
+          <h4 className="font-bold text-lg text-black">
             Highest Bid : {lot.currentHighestBid}
           </h4>
         </CardFooter>
