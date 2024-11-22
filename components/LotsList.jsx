@@ -29,14 +29,16 @@ const LotsList = () => {
 
   return (
 
-    <div className='w-screen text-black h-screen flex flex-col md:flex-row md:flex-wrap md:justify-around overflow-x-hidden'>
-        {lots && lots.map((lot) => {
-            return (
-                    <LotCard key={lot._id} lot={lot} onClick={() => router.push(`/buyer/${lot._id}`)}/>
-            )
-                    
-        })}
-    </div>
+    <div className=' text-black  min-h-screen box-border flex flex-wrap justify-center gap-8 overflow-x-hidden'>
+  {lots &&
+    lots.map((lot) => (
+      <LotCard
+        key={lot._id}
+        lot={lot}
+        onClick={() => router.push(`/buyer/${lot._id}` )}
+      />
+    ))}
+</div>
   )
 }
 

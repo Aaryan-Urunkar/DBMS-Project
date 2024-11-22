@@ -28,7 +28,7 @@ const LotDisplayCard = ({ lot  , onClick}) => {
 
 
   return (
-      <Card className="mt-3 py-4 shadow-2xl bg-yellow-100 rounded-xl hover:scale-125 duration-500 hover:z-10 md:w-[25%] h-[100%]">
+      <Card className="mt-3 py-4 shadow-2xl bg-yellow-100 rounded-xl hover:scale-125 duration-500 hover:z-10 md:w-[25%] h-[100%] ">
         <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
           <p className="text-2xl font-bold font-serif mb-4 text-black">{lot.name}</p>
           <small className="text-md uppercase font-bold text-black">Status : {lot.lotStatus}</small>

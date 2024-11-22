@@ -1,18 +1,30 @@
-"use server"
-import React  from 'react';
-import UserNav from "@/components/UserNav"
-import LotsList from '@/components/LotsList';
+"use client";
+import React, { useState } from "react";
+import UserNav from "@/components/UserNav";
+import LotsList from "@/components/LotsList";
+import Inventory from "@/components/Inventory";
 
 const UserPage = () => {
+  const [activeTab, setActiveTab] = useState("lots"); // Default to "lots"
 
-
+  const renderActiveTab = () => {
+    switch (activeTab) {
+      case "lots":
+        return <LotsList />;
+      case "inventory":
+        return <Inventory />;
+      default:
+        return <LotsList />;
+    }
+  };
 
   return (
-    <div className='h-screen w-screen overflow-x-hidden'>
-      <UserNav></UserNav>
-      <LotsList></LotsList>
+    <div className="w-full max-w-full">
+      {/* Pass setActiveTab to UserNav to handle tab switching */}
+      <UserNav setActiveTab={setActiveTab} />
+      {renderActiveTab()}
     </div>
-  )
-}
+  );
+};
 
-export default UserPage
+export default UserPage;
