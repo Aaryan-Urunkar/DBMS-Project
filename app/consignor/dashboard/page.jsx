@@ -16,7 +16,7 @@ const ConsignorDashboard = () => {
   useEffect(() => {
     const getAllAuctionHouses = async () => {
       const response = await axios
-        .get("http://localhost:3000/api/auction-house", {
+        .get("/api/auction-house", {
           headers: {
             authorization: localStorage.getItem("jwtToken"),
           },
@@ -33,7 +33,7 @@ const ConsignorDashboard = () => {
     };
 
     const getAllLots = async() =>{
-      const response  = await axios.get("http://localhost:3000/api/lot/fetch" , {
+      const response  = await axios.get("/api/lot/fetch" , {
         headers:{
           authorization: localStorage.getItem("jwtToken"),
         }

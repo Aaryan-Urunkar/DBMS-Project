@@ -23,7 +23,7 @@ const Inventory = () => {
   useEffect(() => {
     const fetchInventory = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/user/inventory/", {
+        const response = await axios.get("/api/user/inventory/", {
           headers: {
             authorization: localStorage.getItem("jwtToken"),
           },

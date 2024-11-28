@@ -14,7 +14,7 @@ const LoginPage = () => {
   const login = async (e) => {
     e.preventDefault();
     try {
-        const response = await axios.post("http://localhost:3000/api/user/login" , {
+        const response = await axios.post("/api/user/login" , {
           username:usernameRef.current.value,
           password : passwordRef.current.value
         }).then(function (response) {

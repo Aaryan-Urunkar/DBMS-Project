@@ -14,7 +14,7 @@ const LotDisplayCard = ({ lot  , onClick}) => {
     
     useEffect(() => {
         const getAh = async() => {
-            const response = await axios.get(`http://localhost:3000/api/auction-house/get/${lot.auctionHouseOfIssuance}`)
+            const response = await axios.get(`/api/auction-house/get/${lot.auctionHouseOfIssuance}`)
                                     .then(function(response) {
                                         console.log(response.data.name);
                                         

@@ -12,7 +12,7 @@ const LotsList = () => {
 
     useEffect(() => {
         const getAllLots = async() => {
-            const response = await axios.get("http://localhost:3000/api/lot" , {
+            const response = await axios.get("/api/lot" , {
                 headers: {
                     authorization : localStorage.getItem("jwtToken")
                 }

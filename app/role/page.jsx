@@ -35,7 +35,7 @@ const ChooseRole = () => {
     const handleFormSubmit = async(e) =>{
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:3000/api/auction-house/create" ,{
+            const response = await axios.post("/api/auction-house/create" ,{
                 auctionHouseName : nameRef.current.value,
                 auctionHouseImage : imgRef.current.value,
                 fixedCommissionPercentage : fixedCommissionPercentageRef.current.value
@@ -60,7 +60,7 @@ const ChooseRole = () => {
     const handleSetRole =async(e) =>{
         try{
 
-            const response = await axios.post("http://localhost:3000/api/user/set-role" , {
+            const response = await axios.post("/api/user/set-role" , {
                 role: (isBuyer && "buyer") || (isConsignor && "consignor")
             }, {
                 headers:{

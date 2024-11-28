@@ -12,7 +12,7 @@ const AuctionHouseAdminPage = () => {
 
   const deleteHouse = async()=>{
     
-      const response  = await axios.post("http://localhost:3000/api/auction-house/delete" , {
+      const response  = await axios.post("/api/auction-house/delete" , {
         house
       } , {
         headers:{
@@ -29,7 +29,7 @@ const AuctionHouseAdminPage = () => {
   useEffect(()=>{
     const getData = async() =>{
       const response  = await axios.
-      get(`http://localhost:3000/api/auction-house/creator/`,{
+      get(`/api/auction-house/creator/`,{
         headers:{
           authorization : localStorage.getItem("jwtToken")
         }

@@ -15,7 +15,7 @@ const Card = () => {
     e.preventDefault();
     try {
 
-      const response = await axios.post("http://localhost:3000/api/user/register" , {
+      const response = await axios.post("/api/user/register" , {
         name:nameRef.current.value,
         username:usernameRef.current.value,
         password : passwordRef.current.value

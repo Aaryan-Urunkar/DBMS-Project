@@ -30,7 +30,7 @@ const AddLotPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/api/lot/create', lotData , {
+      const response = await axios.post('/api/lot/create', lotData , {
         headers : {
           authorization : localStorage.getItem("jwtToken")
         }
